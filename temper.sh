@@ -1,6 +1,9 @@
 #!/bin/bash
+# un - Имя пользователя
 un="Анатолий"
+# h - время
 h=$(/bin/date +%H)
+
 if [[ $h -ge 4 && $h -le 9 ]]
 then
 	dd="Доброе утро, $un"
@@ -17,5 +20,6 @@ fi
 then
 	dd="Доброй ночи, $un"
 fi
+# Замените Horlivka на свой город указанный на https://wttr.in
 ctemp=$(/usr/bin/curl -s "https://wttr.in/Horlivka?T" | /bin/grep -m 1 -Eo -e '-?[[:digit:]].*°C.*')
 /usr/bin/notify-send "$dd" "Температура: $ctemp"
