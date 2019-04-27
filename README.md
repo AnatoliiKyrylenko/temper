@@ -34,13 +34,27 @@ ctemp=$(/usr/bin/curl -s "https://wttr.in/Horlivka?T"
 ```
 apt install curl libnotify-bin
 ```
-Скрипт адаптирован для cron, можно поставить на запуск при включении системы
+Скрипт адаптирован для cron, можно поставить на запуск при включении системы.
 Для этого зайдём в планировщик заданий crontab -e, и добавим строчку:
 ```
 @reboot sleep 20 && /bin/bash /home/user/.scripts/temper.sh
 ```
 Где /home/user/.scripts/temper.sh адрес скрипта.
+***
 Также можно банально забиндить на горячие клавиши, к примеру Ctrl+t с адресом /home/user/.scripts/temper.sh
+***
+Ещё один способ для тех у кого GNOME. Создать файл app.desktop по адресу ~/.config/autostart
+И добавить в него следующее содержимое:
+```
+[Desktop Entry]
+Type=Application
+Exec=/home/crem/.scripts/temper.sh #адрес скрипта
+Hidden=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=temper
+Name=temper
+```
+После этого в Gnome Tweak Tool в разделе Startup Application у вас появится ваш скрипт temper который будет запускаться при старте системы.
 
 ## Cloning an Existing Repository ( Clone with HTTPS )
 
